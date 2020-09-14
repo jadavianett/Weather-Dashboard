@@ -22,18 +22,34 @@ $(document).ready(function () {
       "https://api.openweathermap.org/data/2.5/weather?q=" +
       searchTerm +
       "&appid=" +
-      apiKey;
-      console.log(queryURL)
+      apiKey +
+      "&units=imperial";
+    console.log(queryURL);
+    $.ajax({
+      url: queryURL,
+      method: "GET",
+    }).then(function (response) {
+      var lon = response.coord.lon;
+      var lat = response.coord.lat;
+      city.text(response.name);
+      temp.text("Temperature: " + response.main.temp + " degrees");
+      humidity.text("Humidity: " + response.main.humidity + "%");
+      windspeed.text("Wind Speed: " + response.wind.speed + " miles/hr");
+
+      var query2URL =
+        "http://api.openweathermap.org/data/2.5/uvi?appid=" +
+        apiKey +
+        "&lat=" +
+        lat +
+        "&lon=" +
+        lon;
+      console.log(query2URL);
       $.ajax({
-          url: queryURL,
-          method: "GET",
+        url: query2URL,
+        method: "GET",
       }).then(function (response) {
-          console.log(response)
-        city.text(response.name)
-        temp.text("Temperature: " + response.main.temp);
-        humidity.text("Humidity: " + response.main.humidity + "%");
-        windspeed.text("Wind Speed: " + response.wind.speed)
-        // uvindex.text(response.)
-      })
+        uvindex.text("UV Index: " + response.value);
+      });
+    });
   });
 });
