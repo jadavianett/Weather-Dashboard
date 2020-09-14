@@ -1,5 +1,10 @@
 $(document).ready(function () {
   // DOM VARIABLES
+  var city = $(".maincity");
+  var temp = $(".maintemp");
+  var humidity = $(".mainhumidity");
+  var windspeed = $(".mainwindspeed");
+  var uvindex = $(".mainuvindex");
 
   // JS VARIABLES
   var apiKey = "a71c0c9acdfc6c537e04dc620ee2ba12";
@@ -24,6 +29,11 @@ $(document).ready(function () {
           method: "GET",
       }).then(function (response) {
           console.log(response)
+        city.text(response.name)
+        temp.text("Temperature: " + response.main.temp);
+        humidity.text("Humidity: " + response.main.humidity + "%");
+        windspeed.text("Wind Speed: " + response.wind.speed)
+        // uvindex.text(response.)
       })
   });
 });
