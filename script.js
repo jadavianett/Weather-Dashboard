@@ -10,5 +10,9 @@ $(document).ready(function () {
 $("#search-form").on("submit", function (event) {
     event.preventDefault();
     console.log("you submitted the form"); 
+    var searchTerm = $("#search-term").val();
+    console.log(searchTerm);
+    
+    
 });
 });
