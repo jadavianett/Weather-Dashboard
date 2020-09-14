@@ -37,7 +37,7 @@ $(document).ready(function () {
       windspeed.text("Wind Speed: " + response.wind.speed + " miles/hr");
 
       var query2URL =
-        "http://api.openweathermap.org/data/2.5/uvi?appid=" +
+        "https://api.openweathermap.org/data/2.5/uvi?appid=" +
         apiKey +
         "&lat=" +
         lat +
