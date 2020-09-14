@@ -31,7 +31,7 @@ $(document).ready(function () {
     }).then(function (response) {
       var lon = response.coord.lon;
       var lat = response.coord.lat;
-      city.text(response.name);
+      city.text(response.name +  " " + moment().format("M/D/YY"));
       temp.text("Temperature: " + response.main.temp + " degrees");
       humidity.text("Humidity: " + response.main.humidity + "%");
       windspeed.text("Wind Speed: " + response.wind.speed + " miles/hr");
