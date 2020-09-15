@@ -54,7 +54,6 @@ $(document).ready(function () {
 
   }
 
-
   // FUNCTION CALLS
 init();
 displayPreviousSearches();
@@ -140,10 +139,13 @@ displayPreviousSearches();
             iconDay5.attr("src", "http://openweathermap.org/img/wn/" + response.list[5].weather[0].icon + "@2x.png")
 previousSearchTerms.push(searchTerm);
 localStorage.setItem("previousSearchTerms", JSON.stringify(previousSearchTerms));
-displayPreviousSearches();
 
         });
       });
     });
   });
 });
+
+   
+
+
