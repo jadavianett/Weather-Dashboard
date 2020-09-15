@@ -2,3 +2,27 @@
     font-size: 30px;
     margin-top: 15px;
 }
+
+.lowUv {
+    color:white;
+    background: greenyellow;
+}
+
+.moderateUv {
+    color: black;
+    background: yellow;
+}
+
+.highuV {
+    color: black;
+    background: orange;
+}
+
+.veryHighUv {
+    color: white;
+    background: red;
+}
+.extremeUv {
+    color: white;
+    background: violet;
+}
