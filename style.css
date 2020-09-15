@@ -2,6 +2,13 @@
     font-size: 30px;
     margin-top: 15px;
 }
+.bg-secondary {
+    background: #f8f9fa!important;
+}
+
+.bg-color {
+    background: rgb(207, 238, 250);
+}
 
 .lowUv {
     color:white;
