@@ -30,8 +30,21 @@ $(document).ready(function () {
 
   // JS VARIABLES
   var apiKey = "a71c0c9acdfc6c537e04dc620ee2ba12";
+  var previousSearchTerms; 
+
+  // FUNCTION DEFINITIONS
+  function init() {
+    var currentLocalStorage = localStorage.getItem("previousSearchTerms");
+
+    if (currentLocalStorage !== null) {
+      previousSearchTerms = JSON.parse(currentLocalStorage);
+    } else {
+      previousSearchTerms = [];
+    }
+  }
 
   // FUNCTION CALLS
+init();
 
   // EVENT LISTENERS
   $("#search-form").on("submit", function (event) {
@@ -113,7 +126,8 @@ $(document).ready(function () {
             iconDay3.attr("src", "http://openweathermap.org/img/wn/" + response.list[3].weather[0].icon + "@2x.png")
             iconDay4.attr("src", "http://openweathermap.org/img/wn/" + response.list[4].weather[0].icon + "@2x.png")
             iconDay5.attr("src", "http://openweathermap.org/img/wn/" + response.list[5].weather[0].icon + "@2x.png")
-
+previousSearchTerms.push(searchTerm);
+localStorage.setItem("previousSearchTerms", JSON.stringify(previousSearchTerms));
 
         });
       });
