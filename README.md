@@ -5,10 +5,13 @@ Welcome to my Weather Dashboard! By utilizing a Third-Party API, Moment.js and d
 
 ## Application Layout
 There are three main sections displayed on the page that are coded into the HTML: the form input area, the main weather section, and the 5-day forecast section.
-    Form Input Area: There is a form inside of this section that allows you to search for the name of any city. In order to activate the dashboard and view weather information, a city name must be entered. 
-    Main Weather: In this section, the city name and current date are displayed as a title. Underneath, the current weather conditions including and icon representing the weather conditions are displayed. 
+
+    - Form Input Area: There is a form inside of this section that allows you to search for the name of any city. In order to activate the dashboard and view weather information, a city name must be entered. 
+
+    - Main Weather: In this section, the city name and current date are displayed as a title. Underneath, the current weather conditions including and icon representing the weather conditions are displayed. 
     When the UV index is viewed, a color indicates whether the current UV index is low, moderate, high, very high, or extreme. 
-    5-day forecast: The five day forecast displays the dates for the next five days as well as the corresponding temperature and humidity for those days. There is also an icon representing the weather conditions. 
+
+    - 5-day forecast: The five day forecast displays the dates for the next five days as well as the corresponding temperature and humidity for those days. There is also an icon representing the weather conditions. 
 
 ## HTML 
 I used my HTML to provide the framework for the application. I used Bootstrap's grid system to set up rows and columns. Bootstrap styling was applied to the page and was used to style the submit form as well. Classes and ID's were added to the HTML so that the elements could be targeted by jQuery on the Javascript end. 
