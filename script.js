@@ -20,8 +20,13 @@ $(document).ready(function () {
   var day3Date = $("#day-3");
   var day4Date = $("#day-4");
   var day5Date = $("#day-5");
-  const tomorrow  = moment().add(1, 'days').format("M/D/YY");
-  console.log(tomorrow)
+  var iconDay1 = $("#img-1");
+  var iconDay2 = $("#img-2");
+  var iconDay3 = $("#img-3");
+  var iconDay4 = $("#img-4");
+  var iconDay5 = $("#img-5");
+
+  
 
   // JS VARIABLES
   var apiKey = "a71c0c9acdfc6c537e04dc620ee2ba12";
@@ -63,6 +68,11 @@ $(document).ready(function () {
         method: "GET",
       }).then(function (response) {
         uvindex.text("UV Index: " + response.value);
+        if (response.value <= 2) { uvindex.addClass("lowUv")}
+        else if (response.value <= 5) {uvindex.addClass("moderateUv")}
+        else if (response.value <=7) {uvindex.addClass("highUv")}
+        else if (response.value <= 10) {uvindex.addClass("veryHighUv")}
+        else {uvindex.addIndex("extremeUv")};
 
         var query3URL =
           "https://api.openweathermap.org/data/2.5/forecast?q=" +
@@ -98,6 +108,12 @@ $(document).ready(function () {
             day3Date.text(moment().add(3, 'days').format("M/D/YY"));
             day4Date.text(moment().add(4, 'days').format("M/D/YY"));
             day5Date.text(moment().add(5, 'days').format("M/D/YY"));
+            iconDay1.attr("src", "http://openweathermap.org/img/wn/" + response.list[1].weather[0].icon + "@2x.png")
+            iconDay2.attr("src", "http://openweathermap.org/img/wn/" + response.list[2].weather[0].icon + "@2x.png")
+            iconDay3.attr("src", "http://openweathermap.org/img/wn/" + response.list[3].weather[0].icon + "@2x.png")
+            iconDay4.attr("src", "http://openweathermap.org/img/wn/" + response.list[4].weather[0].icon + "@2x.png")
+            iconDay5.attr("src", "http://openweathermap.org/img/wn/" + response.list[5].weather[0].icon + "@2x.png")
+
 
         });
       });
