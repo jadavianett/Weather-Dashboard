@@ -25,6 +25,7 @@ $(document).ready(function () {
   var iconDay3 = $("#img-3");
   var iconDay4 = $("#img-4");
   var iconDay5 = $("#img-5");
+  var previousSearches = $("#previous-search-terms");
 
   
 
@@ -43,14 +44,25 @@ $(document).ready(function () {
     }
   }
 
+  function displayPreviousSearches () {
+    init();
+    previousSearches.empty();
+    for(var i=0; i <previousSearchTerms.length; i++) {
+      console.log(previousSearchTerms[i]);
+      previousSearches.prepend($("<div class='row'><button class='btn btn-primary'>" + previousSearchTerms[i] + "</div>"))
+    }
+
+  }
+
+
   // FUNCTION CALLS
 init();
+displayPreviousSearches();
 
   // EVENT LISTENERS
   $("#search-form").on("submit", function (event) {
     event.preventDefault();
     var searchTerm = $("#search-term").val();
-    console.log(searchTerm);
 
     var queryURL =
       "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -128,6 +140,7 @@ init();
             iconDay5.attr("src", "http://openweathermap.org/img/wn/" + response.list[5].weather[0].icon + "@2x.png")
 previousSearchTerms.push(searchTerm);
 localStorage.setItem("previousSearchTerms", JSON.stringify(previousSearchTerms));
+displayPreviousSearches();
 
         });
       });
