@@ -27,4 +27,6 @@ Link to deployed application: https://jadavianett.github.io/Weather-Dashboard/
 Link to GitHub repo: https://github.com/jadavianett/Weather-Dashboard
 
 
+![alt text](weatherdashboard.png "Weather Dashboard")
+
 
