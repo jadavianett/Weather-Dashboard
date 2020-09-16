@@ -60,7 +60,6 @@ $(document).ready(function () {
 
   // FUNCTION CALLS
   init();
-  displayPreviousSearches();
 
   // EVENT LISTENERS and API CALLS
   $("#search-form").on("submit", function (event) {
