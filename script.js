@@ -47,7 +47,6 @@ $(document).ready(function () {
     init();
     previousSearches.empty();
     for (var i = 0; i < previousSearchTerms.length; i++) {
-      console.log(previousSearchTerms[i]);
       previousSearches.prepend(
         $(
           "<div class='row mx-auto'><button class='btn btn-secondary mx-auto'>" +
