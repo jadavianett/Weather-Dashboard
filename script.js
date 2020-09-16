@@ -27,14 +27,13 @@ $(document).ready(function () {
   var iconDay5 = $("#img-5");
   var previousSearches = $("#previous-search-terms");
 
-  
-
   // JS VARIABLES
   var apiKey = "a71c0c9acdfc6c537e04dc620ee2ba12";
-  var previousSearchTerms; 
+  var previousSearchTerms;
 
   // FUNCTION DEFINITIONS
   function init() {
+    //SETTING UP LOCAL STORAGE
     var currentLocalStorage = localStorage.getItem("previousSearchTerms");
 
     if (currentLocalStorage !== null) {
@@ -44,21 +43,26 @@ $(document).ready(function () {
     }
   }
 
-  function displayPreviousSearches () {
+  function displayPreviousSearches() {
     init();
     previousSearches.empty();
-    for(var i=0; i <previousSearchTerms.length; i++) {
+    for (var i = 0; i < previousSearchTerms.length; i++) {
       console.log(previousSearchTerms[i]);
-      previousSearches.prepend($("<div class='row mx-auto'><button class='btn btn-secondary mx-auto'>" + previousSearchTerms[i] + "</div></br>"))
+      previousSearches.prepend(
+        $(
+          "<div class='row mx-auto'><button class='btn btn-secondary mx-auto'>" +
+            previousSearchTerms[i] +
+            "</div></br>"
+        )
+      );
     }
-
   }
 
   // FUNCTION CALLS
-init();
-displayPreviousSearches();
+  init();
+  displayPreviousSearches();
 
-  // EVENT LISTENERS
+  // EVENT LISTENERS and API CALLS
   $("#search-form").on("submit", function (event) {
     event.preventDefault();
     var searchTerm = $("#search-term").val();
@@ -92,11 +96,17 @@ displayPreviousSearches();
         method: "GET",
       }).then(function (response) {
         uvindex.text("UV Index: " + response.value);
-        if (response.value <= 2) { uvindex.addClass("lowUv")}
-        else if (response.value <= 5) {uvindex.addClass("moderateUv")}
-        else if (response.value <=7) {uvindex.addClass("highUv")}
-        else if (response.value <= 10) {uvindex.addClass("veryHighUv")}
-        else {uvindex.addIndex("extremeUv")};
+        if (response.value <= 2) {
+          uvindex.addClass("lowUv");
+        } else if (response.value <= 5) {
+          uvindex.addClass("moderateUv");
+        } else if (response.value <= 7) {
+          uvindex.addClass("highUv");
+        } else if (response.value <= 10) {
+          uvindex.addClass("veryHighUv");
+        } else {
+          uvindex.addIndex("extremeUv");
+        }
 
         var query3URL =
           "https://api.openweathermap.org/data/2.5/forecast?q=" +
@@ -126,26 +136,52 @@ displayPreviousSearches();
             "Humidity: " + response.list[4].main.humidity + "%"
           );
           day5Humidity.text(
-            "Humidity: " + response.list[5].main.humidity + "%");
-            day1Date.text(moment().add(1, 'days').format("M/D/YY"));
-            day2Date.text(moment().add(2, 'days').format("M/D/YY"));
-            day3Date.text(moment().add(3, 'days').format("M/D/YY"));
-            day4Date.text(moment().add(4, 'days').format("M/D/YY"));
-            day5Date.text(moment().add(5, 'days').format("M/D/YY"));
-            iconDay1.attr("src", "http://openweathermap.org/img/wn/" + response.list[1].weather[0].icon + "@2x.png")
-            iconDay2.attr("src", "http://openweathermap.org/img/wn/" + response.list[2].weather[0].icon + "@2x.png")
-            iconDay3.attr("src", "http://openweathermap.org/img/wn/" + response.list[3].weather[0].icon + "@2x.png")
-            iconDay4.attr("src", "http://openweathermap.org/img/wn/" + response.list[4].weather[0].icon + "@2x.png")
-            iconDay5.attr("src", "http://openweathermap.org/img/wn/" + response.list[5].weather[0].icon + "@2x.png")
-previousSearchTerms.push(searchTerm);
-localStorage.setItem("previousSearchTerms", JSON.stringify(previousSearchTerms));
-displayPreviousSearches();
+            "Humidity: " + response.list[5].main.humidity + "%"
+          );
+          day1Date.text(moment().add(1, "days").format("M/D/YY"));
+          day2Date.text(moment().add(2, "days").format("M/D/YY"));
+          day3Date.text(moment().add(3, "days").format("M/D/YY"));
+          day4Date.text(moment().add(4, "days").format("M/D/YY"));
+          day5Date.text(moment().add(5, "days").format("M/D/YY"));
+          iconDay1.attr(
+            "src",
+            "http://openweathermap.org/img/wn/" +
+              response.list[1].weather[0].icon +
+              "@2x.png"
+          );
+          iconDay2.attr(
+            "src",
+            "http://openweathermap.org/img/wn/" +
+              response.list[2].weather[0].icon +
+              "@2x.png"
+          );
+          iconDay3.attr(
+            "src",
+            "http://openweathermap.org/img/wn/" +
+              response.list[3].weather[0].icon +
+              "@2x.png"
+          );
+          iconDay4.attr(
+            "src",
+            "http://openweathermap.org/img/wn/" +
+              response.list[4].weather[0].icon +
+              "@2x.png"
+          );
+          iconDay5.attr(
+            "src",
+            "http://openweathermap.org/img/wn/" +
+              response.list[5].weather[0].icon +
+              "@2x.png"
+          );
+          //LOCAL STORAGE
+          previousSearchTerms.push(searchTerm);
+          localStorage.setItem(
+            "previousSearchTerms",
+            JSON.stringify(previousSearchTerms)
+          );
+          displayPreviousSearches();
         });
       });
     });
   });
 });
-
-   
-
-
