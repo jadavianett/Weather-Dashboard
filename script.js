@@ -49,7 +49,7 @@ $(document).ready(function () {
     previousSearches.empty();
     for(var i=0; i <previousSearchTerms.length; i++) {
       console.log(previousSearchTerms[i]);
-      previousSearches.prepend($("<div class='row'><button class='btn btn-primary'>" + previousSearchTerms[i] + "</div>"))
+      previousSearches.prepend($("<div class='row mx-auto'><button class='btn btn-secondary mx-auto'>" + previousSearchTerms[i] + "</div></br>"))
     }
 
   }
@@ -139,7 +139,7 @@ displayPreviousSearches();
             iconDay5.attr("src", "http://openweathermap.org/img/wn/" + response.list[5].weather[0].icon + "@2x.png")
 previousSearchTerms.push(searchTerm);
 localStorage.setItem("previousSearchTerms", JSON.stringify(previousSearchTerms));
-
+displayPreviousSearches();
         });
       });
     });
